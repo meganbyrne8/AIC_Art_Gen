@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { PacmanLoader } from "react-spinners";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./global";
 import { theme } from "./theme";
@@ -66,6 +67,7 @@ function App() {
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
         </div>
+        <PacmanLoader color="red" loading={loading} />
         <Feature featured={imageList[feature]} />
         <Gallery
           galleryList={imageList}

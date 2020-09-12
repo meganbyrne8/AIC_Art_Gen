@@ -1,4 +1,5 @@
 import React from "react";
+import { GalleryImageSingle, TempImg } from "./Gallery.styled";
 
 export default function Image(props) {
   const { changeFeature, src, title, index } = props;
@@ -8,8 +9,8 @@ export default function Image(props) {
   };
 
   return (
-    <div>
-      <img src={src} alt={title} onClick={updateFeature} />
-    </div>
+    <GalleryImageSingle>
+      <TempImg src={src} alt={title} onClick={updateFeature} />
+    </GalleryImageSingle>
   );
 }

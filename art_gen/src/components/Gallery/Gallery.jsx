@@ -1,4 +1,11 @@
 import React from "react";
+import {
+  GalleryParent,
+  GalleryImagesParent,
+  GalleryImageSingle,
+  TempImg,
+} from "./Gallery.styled";
+import { FeatureButton } from "../Feature/Feature.styled";
 import Image from "./Image";
 
 export default function Gallery(props) {
@@ -8,8 +15,8 @@ export default function Gallery(props) {
     return <div>Loading</div>;
   } else {
     return (
-      <div>
-        <div>
+      <GalleryParent>
+        <GalleryImagesParent>
           {galleryList.map((image, index) => (
             <Image
               src={image.url}
@@ -18,12 +25,14 @@ export default function Gallery(props) {
               changeFeature={changeFeature}
             />
           ))}
-        </div>
+        </GalleryImagesParent>
 
         <div>
-          <button onClick={galleryRefresh}>Create New Gallery</button>
+          <FeatureButton onClick={galleryRefresh}>
+            Create New Gallery
+          </FeatureButton>
         </div>
-      </div>
+      </GalleryParent>
     );
   }
 }

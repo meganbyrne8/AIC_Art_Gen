@@ -1,5 +1,10 @@
 import React from "react";
-// import moonloader here for feature image, should be the truthy condition for the if on line 11
+import {
+  FeaturedStyles,
+  FeaturedChildStyles,
+  FeaturedImg,
+  FeatureButton,
+} from "./Feature.styled";
 
 export default function Feature(props) {
   const { featured } = props;
@@ -12,21 +17,21 @@ export default function Feature(props) {
     return <div>Loading...</div>;
   } else {
     return (
-      <div>
-        <div>
+      <FeaturedStyles>
+        <FeaturedChildStyles>
           <h2>{featured.title}</h2>
           <h3>{featured.name}</h3>
           <p>{featured.date}</p>
           <p>{featured.medium}</p>
           <p>{featured.copyright}</p>
           <p>{featured.description}</p>
-          <button onClick={openPage}>Read More</button>
-        </div>
+          <FeatureButton onClick={openPage}>Read More</FeatureButton>
+        </FeaturedChildStyles>
 
-        <div>
-          <img src={featured.url} alt={featured.title} />
-        </div>
-      </div>
+        <FeaturedChildStyles>
+          <FeaturedImg src={featured.url} alt={featured.title} />
+        </FeaturedChildStyles>
+      </FeaturedStyles>
     );
   }
 }
