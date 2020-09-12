@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Nav from "./components/Layout/Nav";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "./global";
+import { theme } from "./theme";
 import Feature from "./components/Feature/Feature";
 import Gallery from "./components/Gallery/Gallery";
+import Burger from "./components/Layout/Burger/Burger";
+import Menu from "./components/Layout/Menu/Menu";
 import "./App.css";
 
 function App() {
@@ -10,6 +14,7 @@ function App() {
   const [feature, setFeature] = useState(0);
   const [page, setPage] = useState(2);
   const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const generateGallery = () => {
     setLoading(true);
@@ -54,16 +59,21 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Nav />
-      <h1>Hi!!!</h1>
-      <Feature featured={imageList[feature]} />
-      <Gallery
-        galleryList={imageList}
-        galleryRefresh={generateGallery}
-        changeFeature={changeFeature}
-      />
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <div className="App">
+        <div>
+          <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} />
+        </div>
+        <Feature featured={imageList[feature]} />
+        <Gallery
+          galleryList={imageList}
+          galleryRefresh={generateGallery}
+          changeFeature={changeFeature}
+        />
+      </div>
+    </ThemeProvider>
   );
 }
 
