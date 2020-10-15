@@ -12,16 +12,22 @@ export const GalleryImagesParent = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  width: 90%;
+  justify-content: space-around;
+  width: 100%;
 `;
 
 export const GalleryImageSingle = styled.div`
+  display: flex;
   width: 20%;
-  margin: 2px 5px;
+  margin: 1rem;
 `;
 
 export const TempImg = styled.img`
-  object-fit: scale-down;
+  border-top: 5px solid lightgrey;
+  border-right: 5px solid white;
+  border-bottom: 5px solid lightgrey;
+  border-left: 5px solid white;
+  box-sizing: border-box;
+  object-fit: cover;
   width: 100%;
 `;

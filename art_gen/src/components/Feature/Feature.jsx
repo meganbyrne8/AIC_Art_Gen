@@ -2,6 +2,7 @@ import React from "react";
 import {
   FeaturedStyles,
   FeaturedChildStyles,
+  FeaturedImageChildStyles,
   FeaturedImg,
   FeatureButton,
 } from "./Feature.styled";
@@ -28,9 +29,9 @@ export default function Feature(props) {
           <FeatureButton onClick={openPage}>Read More</FeatureButton>
         </FeaturedChildStyles>
 
-        <FeaturedChildStyles>
+        <FeaturedImageChildStyles>
           <FeaturedImg src={featured.url} alt={featured.title} />
-        </FeaturedChildStyles>
+        </FeaturedImageChildStyles>
       </FeaturedStyles>
     );
   }

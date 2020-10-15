@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  GalleryParent,
-  GalleryImagesParent,
-  GalleryImageSingle,
-  TempImg,
-} from "./Gallery.styled";
+import { GalleryParent, GalleryImagesParent } from "./Gallery.styled";
 import { FeatureButton } from "../Feature/Feature.styled";
 import Image from "./Image";
 
