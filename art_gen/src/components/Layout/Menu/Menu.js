@@ -6,13 +6,19 @@ const Menu = (props) => {
 
   return (
     <StyledMenu open={open}>
+       <a href="/">
+        <span role="img" aria-label="home">
+          &#127968;
+        </span>
+        Home
+      </a>
       <a href="/">
         <span role="img" aria-label="about">
           &#127994;
         </span>
         About
       </a>
-      <a href="/">
+      <a href="/secret-galleries">
         <span role="img" aria-label="secret galleries">
           &#9889;
         </span>

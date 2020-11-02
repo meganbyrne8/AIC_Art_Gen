@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { PacmanLoader } from "react-spinners";
+import { Route } from 'react-router-dom';
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./global";
 import { theme } from "./theme";
+import { PacmanLoader } from "react-spinners";
+import axios from "axios";
 import Feature from "./components/Feature/Feature";
 import Gallery from "./components/Gallery/Gallery";
 import Burger from "./components/Layout/Burger/Burger";
 import Menu from "./components/Layout/Menu/Menu";
+import MamaGallery from './components/SecretGalleries/MamaGallery'
+import BabyGallery from './components/SecretGalleries/Baby_Gallery'
+import SecretReturn from './components/SecretGalleries/Secret_Return'
 import "./App.css";
 
 function App() {
@@ -63,6 +67,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <div className="App">
+
+        <Route exact path='/'>
         <div>
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
@@ -73,8 +79,41 @@ function App() {
           galleryList={imageList}
           galleryRefresh={generateGallery}
           changeFeature={changeFeature}
-        />
+          />
+        </Route>
+
+        <Route exact path='/secret-galleries'>
+          <div>
+            <Burger open={open} setOpen={setOpen} />
+            <Menu open={open} setOpen={setOpen} />
+          </div>
+          <div>
+            <PacmanLoader color="red" loading={loading} />
+          </div>
+          <div>
+            <MamaGallery />
+          </div>
+        </Route>
+
+        <Route exact path="/secret-galleries/:id">
+          <div>
+            <Burger open={open} setOpen={setOpen} />
+            <Menu open={open} setOpen={setOpen} />
+          </div>
+          <div>
+            <PacmanLoader color="red" loading={loading} />
+          </div>
+          <div>
+              <BabyGallery />
+          </div>
+        </Route>
+        
+        <Route path="/secret-galleries/thief" render={() => <SecretReturn  />} />
+
+
+
       </div>
+      
     </ThemeProvider>
   );
 }
