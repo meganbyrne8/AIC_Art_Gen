@@ -13,6 +13,7 @@ import MamaGallery from './components/SecretGalleries/MamaGallery'
 import BabyGallery from './components/SecretGalleries/Baby_Gallery'
 import SecretReturn from './components/SecretGalleries/Secret_Return'
 import "./App.css";
+import { BGalleryParent } from './App.styled'
 
 function App() {
   const [imageList, setImageList] = useState([]);
@@ -93,12 +94,12 @@ function App() {
             <Menu open={open} setOpen={setOpen} />
           </div>
 
-          <div>
+          <div className='loader-pacman'>
             <PacmanLoader color="red" loading={loading} />
           </div>
 
           <div>
-            <MamaGallery />
+            <MamaGallery galleryList={imageList}/>
           </div>
         </Route>
 
@@ -112,9 +113,9 @@ function App() {
             <PacmanLoader color="red" loading={loading} />
           </div>
 
-          <div>
+          <BGalleryParent>
             <BabyGallery galleryList={imageList} setLoading={setLoading}/>
-          </div>
+          </BGalleryParent>
         </Route>
         
         <Route path="/secret-galleries/thief" render={() => <SecretReturn  />} />

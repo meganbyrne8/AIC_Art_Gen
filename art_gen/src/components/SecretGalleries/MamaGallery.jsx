@@ -4,7 +4,7 @@ import BabyGallery from './Baby_Gallery';
 import LoginScreen from './LoginScreen';
 import SecretReturn from './Secret_Return'
 
-export default function MamaGallery() {
+export default function MamaGallery(props) {
   const [url, setURL] = useState(null);
   const [galleryArr, setGalleryArr] = useState([]);
   const [generatedComponent, setGeneratedComponent] = useState(false)
@@ -49,7 +49,7 @@ export default function MamaGallery() {
 
       <div>
         {generatedComponent ? (
-          <LoginScreen url={url}/>
+          <LoginScreen url={url} />
         ) : (
             <SecretReturn />
           )

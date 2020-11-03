@@ -2,6 +2,15 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { baseURL }  from '../../../services/constants'
 import axios from 'axios';
+import {
+  IndivGalleryStyles, InputFields,
+  FormLabel, FormInput,
+  DisplayRecords, DisplayOptions,
+  SubmitButton, ImageSizing,
+  CheckboxParent, CheckboxInput,
+  CheckboxLabel, SubmitDiv,
+  CheckboxDiv, PhotoDiv
+} from '../GalleryStyles.styled'
 
 export default function PostGallery(props) {
   const [title, setTitle] = useState('')
@@ -53,75 +62,83 @@ export default function PostGallery(props) {
   
 
   return (
-    <div>
-      <form>
+    <DisplayRecords>
+      <DisplayOptions>
         {
           props.galleryList.map((works) => (
-            <div key={works.title}>
-
-              <input
-                type="checkbox"
-                name="choosy-work"
-                id="choosy-work"
-                value="ChosenWork"
-                onChange={() => {
-                  setTitle(works.title != null ? works.title : '');
-                  setName(works.name != null ? works.name : '');
-                  setDate(works.date != null ? works.date : '');
-                  setMedium(works.medium != null ? works.medium : '');
-                  setCopyright(works.copyright != null ? works.copyright : '');
-                  setDescription(works.description != null ? works.description : '');
-                  setURL(works.url != null ? works.url : '');
-                  handleManyFields();
-                }}
-              />
-                <label htmlFor="choosy-work">
-                  Would you like to add this to the {id} gallery?
-                </label>
-              <label htmlFor="title">Title:</label>
-              <input 
-                name="title"
-                type="text"
-                value={works.title}
-              />
-              <label htmlFor="name">Name:</label>
-              <input
-                name="name"
-                type="text"
-                value={works.name}
-              />
-              <label htmlFor="date"></label>
-              <input
-                name="date"
-                type="text"
-                value={works.date}
-              />
-              <label htmlFor="medium"></label>
-              <input
-                name="medium"
-                type="text"
-                value={works.medium}
-              />
-              <label htmlFor="copyright"></label>
-              <input
-                name="copyright"
-                type="text"
-                value={works.copyright}
-              />
-              <label htmlFor="description"></label>
-              <input
-                name="description"
-                type="text"
-                value={works.description}
-              />
-              <img src={works.url} alt={works.title} width="500" />
-              <button
-                type="submit"
-                onClick={handlePost}>Fry Me Cap'n</button>
-            </div>
+            <IndivGalleryStyles key={works.title}>
+              <InputFields>
+                <FormLabel htmlFor="title">Title:</FormLabel>
+                <FormInput 
+                  name="title"
+                  type="text"
+                  value={works.title}
+                />
+                <FormLabel htmlFor="name">Name:</FormLabel>
+                <FormInput
+                  name="name"
+                  type="text"
+                  value={works.name}
+                />
+                <FormLabel htmlFor="date">Date:</FormLabel>
+                <FormInput
+                  name="date"
+                  type="text"
+                  value={works.date}
+                />
+                <FormLabel htmlFor="medium">Medium:</FormLabel>
+                <FormInput
+                  name="medium"
+                  type="text"
+                  value={works.medium}
+                />
+                <FormLabel htmlFor="copyright">Copyright:</FormLabel>
+                <FormInput
+                  name="copyright"
+                  type="text"
+                  value={works.copyright}
+                />
+                <FormLabel htmlFor="description">Description:</FormLabel>
+                <FormInput
+                  name="description"
+                  type="text"
+                  value={works.description}
+                />
+                <CheckboxParent>
+                  <CheckboxDiv>
+                    <CheckboxLabel htmlFor="choosy-work">Would you like to add this to the {id} gallery?</CheckboxLabel>
+                    <CheckboxInput
+                    type="checkbox"
+                    name="choosy-work"
+                    id="choosy-work"
+                    value="ChosenWork"
+                    onChange={() => {
+                      setTitle(works.title != null ? works.title : '');
+                      setName(works.name != null ? works.name : '');
+                      setDate(works.date != null ? works.date : '');
+                      setMedium(works.medium != null ? works.medium : '');
+                      setCopyright(works.copyright != null ? works.copyright : '');
+                      setDescription(works.description != null ? works.description : '');
+                      setURL(works.url != null ? works.url : '');
+                      handleManyFields();
+                    }}
+                    />
+                  </CheckboxDiv>
+                  <SubmitDiv>
+                    <SubmitButton
+                    type="submit"
+                        onClick={handlePost}>Add To Gallery</SubmitButton>
+                  </SubmitDiv>
+                </CheckboxParent>
+              </InputFields>
+              
+              <PhotoDiv>
+                <ImageSizing src={works.url} alt={works.title} width="500" />
+              </PhotoDiv>
+            </IndivGalleryStyles>
           ))
         }
-      </form>
-    </div>
+      </DisplayOptions>
+    </DisplayRecords>
   )
 }

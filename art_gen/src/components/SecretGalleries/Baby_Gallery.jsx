@@ -4,6 +4,7 @@ import axios from 'axios';
 import { baseURL } from '../../services/constants';
 import { FaRegPlusSquare } from "react-icons/fa";
 import PostGallery from './CRUD_Galleries/Post_Gallery'
+import { GalleryDisplay, FormContainerParent, FormContainerChild } from './BabyGallery.styled'
 
 export default function BabyGallery(props) {
   const [gallery, setGallery] = useState([]);
@@ -38,13 +39,14 @@ export default function BabyGallery(props) {
 
 
   return (
-    <div>
-      <div>
-        <FaRegPlusSquare />
+    <GalleryDisplay>
+      <FormContainerParent>
         {postWork ? <PostGallery galleryList={props.galleryList} setLoading={props.setLoading}/> : <></>}
-      </div>
+      </FormContainerParent>
 
-      <div>{displayRecords}</div>
-    </div>
+      <FormContainerChild>
+        {displayRecords}
+      </FormContainerChild>
+    </GalleryDisplay>
   );
 }
