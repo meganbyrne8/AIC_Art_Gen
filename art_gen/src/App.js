@@ -69,20 +69,6 @@ function App() {
       <div className="App">
 
         <Route exact path='/'>
-        <div>
-          <Burger open={open} setOpen={setOpen} />
-          <Menu open={open} setOpen={setOpen} />
-        </div>
-        <PacmanLoader color="red" loading={loading} />
-        <Feature featured={imageList[feature]} />
-        <Gallery
-          galleryList={imageList}
-          galleryRefresh={generateGallery}
-          changeFeature={changeFeature}
-          />
-        </Route>
-
-        <Route exact path='/secret-galleries'>
           <div>
             <Burger open={open} setOpen={setOpen} />
             <Menu open={open} setOpen={setOpen} />
@@ -90,6 +76,27 @@ function App() {
           <div>
             <PacmanLoader color="red" loading={loading} />
           </div>
+
+          <div>
+            <Feature featured={imageList[feature]} />
+            <Gallery
+              galleryList={imageList}
+              galleryRefresh={generateGallery}
+              changeFeature={changeFeature}
+              />
+          </div>
+        </Route>
+
+        <Route exact path='/secret-galleries'>
+          <div>
+            <Burger open={open} setOpen={setOpen} />
+            <Menu open={open} setOpen={setOpen} />
+          </div>
+
+          <div>
+            <PacmanLoader color="red" loading={loading} />
+          </div>
+
           <div>
             <MamaGallery />
           </div>
@@ -100,20 +107,18 @@ function App() {
             <Burger open={open} setOpen={setOpen} />
             <Menu open={open} setOpen={setOpen} />
           </div>
+
           <div>
             <PacmanLoader color="red" loading={loading} />
           </div>
+
           <div>
-              <BabyGallery />
+            <BabyGallery galleryList={imageList} setLoading={setLoading}/>
           </div>
         </Route>
         
         <Route path="/secret-galleries/thief" render={() => <SecretReturn  />} />
-
-
-
       </div>
-      
     </ThemeProvider>
   );
 }
