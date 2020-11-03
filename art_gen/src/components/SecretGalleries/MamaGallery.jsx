@@ -3,6 +3,10 @@ import { Route } from 'react-router-dom';
 import BabyGallery from './Baby_Gallery';
 import LoginScreen from './LoginScreen';
 import SecretReturn from './Secret_Return'
+import {
+  MGParent, OptionParent,
+  MGOptionLabel
+} from './MamaGallery.styled'
 
 export default function MamaGallery(props) {
   const [url, setURL] = useState(null);
@@ -31,9 +35,9 @@ export default function MamaGallery(props) {
   }, [url]);
 
   return (
-    <div>
-      <div>
-      <label htmlFor='gallery-choice'>Choose a Gallery</label>
+    <MGParent>
+      <OptionParent>
+      <MGOptionLabel htmlFor='gallery-choice'>Choose a Gallery</MGOptionLabel>
         <select
           id='gallery-choice'
           name='gallery-choice'
@@ -45,7 +49,7 @@ export default function MamaGallery(props) {
         <option value='cake_eyez'>CakeEyes</option>
         <option value='baptisvs'>Baptisvs</option>
         </select>
-      </div>
+      </OptionParent>
 
       <div>
         {generatedComponent ? (
@@ -56,6 +60,6 @@ export default function MamaGallery(props) {
         }
       </div>
       
-    </div>
+    </MGParent>
   )
 }

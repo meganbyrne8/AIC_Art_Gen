@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { baseURL }  from '../../../services/constants'
 import axios from 'axios';
 import {
@@ -23,6 +23,7 @@ export default function PostGallery(props) {
   
 
   const { id } = useParams()
+  const { history } = useHistory()
   const testURL = `${baseURL}/${id}`
 
   const fields = {
@@ -127,7 +128,11 @@ export default function PostGallery(props) {
                   <SubmitDiv>
                     <SubmitButton
                     type="submit"
-                        onClick={handlePost}>Add To Gallery</SubmitButton>
+                      onClick={() => {
+                        handlePost();
+                        alert('Your piece has been submitted to the gallery board for review');
+                        history.push(testURL)
+                        }}>Add To Gallery</SubmitButton>
                   </SubmitDiv>
                 </CheckboxParent>
               </InputFields>

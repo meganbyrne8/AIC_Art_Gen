@@ -6,3 +6,11 @@ export const BGalleryParent = styled.div`
   flex-direction: column;
   margin-top: 12vh;
 `;
+
+export const MGGalleryParent = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+`;
+

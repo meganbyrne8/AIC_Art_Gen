@@ -13,7 +13,7 @@ import MamaGallery from './components/SecretGalleries/MamaGallery'
 import BabyGallery from './components/SecretGalleries/Baby_Gallery'
 import SecretReturn from './components/SecretGalleries/Secret_Return'
 import "./App.css";
-import { BGalleryParent } from './App.styled'
+import { BGalleryParent, MGGalleryParent } from './App.styled'
 
 function App() {
   const [imageList, setImageList] = useState([]);
@@ -98,9 +98,9 @@ function App() {
             <PacmanLoader color="red" loading={loading} />
           </div>
 
-          <div>
+          <MGGalleryParent>
             <MamaGallery galleryList={imageList}/>
-          </div>
+          </MGGalleryParent>
         </Route>
 
         <Route exact path="/secret-galleries/:id">

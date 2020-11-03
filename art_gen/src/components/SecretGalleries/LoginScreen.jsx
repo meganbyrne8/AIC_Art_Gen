@@ -3,6 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { baseURL } from '../../services/constants';
 import axios from 'axios';
+import {
+  DisplayGallery, DisplayIMG,
+  DisplayForm, FormLabel,
+  FormInput, SubmitButton
+} from './LoginScreen.styled'
 
 
 export default function LoginScreen(props) {
@@ -42,9 +47,9 @@ export default function LoginScreen(props) {
   }, [])
 
   const displayGallery = galleryArr.map((works) => (
-    <div key={works.id}>
+    <DisplayGallery key={works.id}>
       <div>
-        <img src={works.fields.url} alt={works.fields.title} />
+        <DisplayIMG src={works.fields.url} alt={works.fields.title} />
       </div>
 
       <div>
@@ -55,7 +60,7 @@ export default function LoginScreen(props) {
         <p >{works.fields.copyright}</p>
         <p>{works.fields.description}</p>
       </div>
-    </div>
+    </DisplayGallery>
   ))
 
 
@@ -64,11 +69,11 @@ export default function LoginScreen(props) {
     <div>
       {displayGallery}
 
-      <form onChange={handleChange} >
-        <label htmlFor='gallery-password'>Enter Secret Password:</label><br />
-        <input type='text' id='gallery-password' />
-      </form>
-      <button onClick={handlePassword}>Submit Form</button>
+      <DisplayForm onChange={handleChange} >
+        <FormLabel htmlFor='gallery-password'>What Should Go Here?</FormLabel>
+        <FormInput type='text' id='gallery-password' />
+      </DisplayForm>
+      <SubmitButton onClick={handlePassword}>Click Me</SubmitButton>
 
     </div>
   )
