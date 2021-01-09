@@ -21,6 +21,11 @@ function App() {
   const [page, setPage] = useState(2);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
+  const [galleryNames, setGalleryNames] = useState([
+    "Tim_Gallery",
+    "cake_eyez",
+    "baptisvs",
+  ]);
 
   const generateGallery = () => {
     setLoading(true);
@@ -99,11 +104,11 @@ function App() {
           </div>
 
           <MGGalleryParent>
-            <MamaGallery galleryList={imageList}/>
+            <MamaGallery galleryList={imageList} galleryNames={galleryNames}/>
           </MGGalleryParent>
         </Route>
 
-        <Route exact path="/secret-galleries/:id">
+        <Route exact path="/secret-galleries">
           <div>
             <Burger open={open} setOpen={setOpen} />
             <Menu open={open} setOpen={setOpen} />

@@ -4,7 +4,7 @@ import SecretReturn from "./Secret_Return";
 import { MGParent, OptionParent, MGOptionLabel } from "./MamaGallery.styled";
 
 export default function MamaGallery(props) {
-  const [url, setURL] = useState(null);
+  const [url, setURL] = useState("");
   const [galleryArr, setGalleryArr] = useState([]);
   const [generatedComponent, setGeneratedComponent] = useState(false);
 
@@ -19,7 +19,7 @@ export default function MamaGallery(props) {
 
   const handleChange = (e) => {
     const { value } = e.target;
-    setURL(value);
+    setURL(`${value}`);
     setGeneratedComponent(true);
   };
 
@@ -40,9 +40,9 @@ export default function MamaGallery(props) {
           <option className="galleries" disabled value="default">
             --Select a Gallery--
           </option>
-          <option value="Tim_Gallery">Sllop</option>
-          <option value="cake_eyez">CakeEyes</option>
-          <option value="baptisvs">Baptisvs</option>
+          {props.galleryNames.map((x) => (
+            <option>{x}</option>
+          ))}
         </select>
       </OptionParent>
 

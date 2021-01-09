@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { FaRegPlusSquare } from "react-icons/fa";
 import { baseURL } from "../../services/constants";
 import {
   DisplayForm,
@@ -10,6 +10,7 @@ import {
   FormLabel,
   SubmitButton,
 } from "./LoginScreen.styled";
+import BabyGallery from "./Baby_Gallery";
 
 export default function LoginScreen(props) {
   const [password, setPassword] = useState("");
@@ -46,23 +47,8 @@ export default function LoginScreen(props) {
 
   return (
     <div>
-      {isSet &&
-        galleryArr.map((works) => (
-          <DisplayGallery key={works.id}>
-            <div>
-              <DisplayIMG src={works.fields.url} alt={works.fields.title} />
-            </div>
-
-            <div>
-              <h2>{works.fields.title}</h2>
-              <h3>{works.fields.name}</h3>
-              <p>{works.fields.date}</p>
-              <p>{works.fields.medium}</p>
-              <p>{works.fields.copyright}</p>
-              <p>{works.fields.description}</p>
-            </div>
-          </DisplayGallery>
-        ))}
+      <FaRegPlusSquare />
+      {isSet && <BabyGallery testURL={testURL} galleryList={galleryArr} />}
       {!isSet && (
         <>
           <DisplayForm onSubmit={handleChange}>
