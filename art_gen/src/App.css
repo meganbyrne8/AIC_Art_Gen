@@ -4,3 +4,9 @@
   text-align: center;
   width: 100%;
 }
+
+.loader-pacman {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

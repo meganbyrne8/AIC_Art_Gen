@@ -48,7 +48,6 @@ export default function LoginScreen(props) {
   return (
     <div>
       <FaRegPlusSquare />
-      {isSet && <BabyGallery testURL={testURL} galleryList={galleryArr} />}
       {!isSet && (
         <>
           <DisplayForm onSubmit={handleChange}>
@@ -60,6 +59,7 @@ export default function LoginScreen(props) {
           <SubmitButton onClick={handlePassword}>Click Me</SubmitButton>
         </>
       )}
+      {isSet && <BabyGallery galleryArr={galleryArr} />}
     </div>
   );
 }

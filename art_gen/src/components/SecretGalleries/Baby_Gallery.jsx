@@ -9,27 +9,28 @@ import {
 
 export default function BabyGallery(props) {
   const [postWork, setPostWork] = useState(false);
+  const { galleryArr, setLoading } = props;
 
-  let galleryList = props.galleryList;
+  console.log(galleryArr);
+  let galleryList = galleryArr.fields;
 
   return (
     <GalleryDisplay>
       <FormContainerParent>
         {postWork ? (
-          <PostGallery
-            galleryList={galleryList}
-            setLoading={props.setLoading}
-          />
+          <PostGallery galleryList={galleryArr} setLoading={props.setLoading} />
         ) : null}
       </FormContainerParent>
 
       <FormContainerChild>
-        {galleryList.map((x, k) => (
-          <>
-            <h3 key={k.title}>{x.title}</h3>
-            <img key={k.copyright} src={x.url} alt={x.title} />
-            <p key={k.description}>{x.description}</p>
-          </>
+        {galleryArr.map((x, k) => (
+          <div key={k.id}>
+            <h3>{x.fields.title}</h3>
+            <h5>{x.fields.name}</h5>
+            <p>{x.fields.description}</p>
+            <p>{x.fields.medium}</p>
+            <p>{x.fields.date}</p>
+          </div>
         ))}
       </FormContainerChild>
     </GalleryDisplay>

@@ -26,6 +26,7 @@ function App() {
     "cake_eyez",
     "baptisvs",
   ]);
+  const [galleryBooCheck, setGalleryBooCheck] = useState(false)
 
   const generateGallery = () => {
     setLoading(true);
@@ -79,9 +80,6 @@ function App() {
             <Burger open={open} setOpen={setOpen} />
             <Menu open={open} setOpen={setOpen} />
           </div>
-          <div>
-            <PacmanLoader color="red" loading={loading} />
-          </div>
 
           <div>
             <Feature featured={imageList[feature]} />
@@ -113,17 +111,9 @@ function App() {
             <Burger open={open} setOpen={setOpen} />
             <Menu open={open} setOpen={setOpen} />
           </div>
-
-          <div>
-            <PacmanLoader color="red" loading={loading} />
-          </div>
-
-          <BGalleryParent>
-            <BabyGallery galleryList={imageList} setLoading={setLoading}/>
-          </BGalleryParent>
         </Route>
         
-        <Route path="/secret-galleries/thief" render={() => <SecretReturn  />} />
+        <Route exact path="/secret-galleries/thief" render={() => <SecretReturn  />} />
       </div>
     </ThemeProvider>
   );
